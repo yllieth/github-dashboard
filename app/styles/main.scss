@@ -1,0 +1,9 @@
+@import "variables";
+
+.sp-top { margin-top: $size-spacement; }
+.sp-left { margin-left: $size-spacement; }
+.sp-right { margin-right: $size-spacement; }
+.sp-bottom { margin-bottom: $size-spacement; }
+.sp-vertical { margin-top: $size-spacement / 2; margin-bottom: $size-spacement / 2; }
+.sp-horizontal { margin-left: $size-spacement / 2; margin-right: $size-spacement / 2; }
+.sp-none { margin: 0; }

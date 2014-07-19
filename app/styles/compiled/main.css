@@ -1,0 +1,36 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000033}}
+.sp-top {
+  margin-top: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000034}}
+.sp-left {
+  margin-left: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000035}}
+.sp-right {
+  margin-right: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000036}}
+.sp-bottom {
+  margin-bottom: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000037}}
+.sp-vertical {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000038}}
+.sp-horizontal {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000039}}
+.sp-none {
+  margin: 0;
+}
