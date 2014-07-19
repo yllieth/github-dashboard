@@ -83,6 +83,6 @@ p {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000333}}
-button.tiny {
+.button.tiny {
   padding: 0.2rem;
 }

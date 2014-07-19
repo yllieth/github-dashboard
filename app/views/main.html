@@ -46,12 +46,11 @@
 								<em>{{ pull.title | limitTo:30 }}...</em>
 							</td>
 							<td>
-								<a ng-href="{{ pull.url }}" class="has-tooltip" 
+								<a ng-href="{{ pull.html_url }}" class="has-tooltip" 
 									 tooltip="View this Pull Request on github" tooltip-placement="bottom">
 									<i class="fa fa-eye"></i>
 								</a>
-								<a ng-href="{{ pull.url }}" class="has-tooltip" 
-									 tooltip="Opened for {{ Projects.since(pull.created_at) }}" tooltip-placement="right">
+								<a class="has-tooltip" tooltip="Opened for {{ Projects.since(pull.created_at) }}" tooltip-placement="right">
 									<i class="fa fa-clock-o"></i>
 								</a>
 							</td>
@@ -70,7 +69,7 @@
 		
 	<aside class="large-3 columns">
 		<div class="panel">
-			<h5>Select feature <button class="tiny right" ng-click="Projects.reset(); Projects.getData()">Update</button></h5>
+			<h5>Select feature <a href="#" class="button primary tiny right">Update</a></h5>
 			<p><input type="checkbox" id="display-PRs" ng-model="Projects.display.pullRequests"/>&nbsp;<label for="display-PRs">Pull requests</label></p>
 		</div>
 	</aside>
