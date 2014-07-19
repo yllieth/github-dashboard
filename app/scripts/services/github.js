@@ -24,6 +24,10 @@ angular.module('githubApp')
           
           return repos;
         });
+      },
+      
+      getPullRequest: function(owner, repo) {
+        return Restangular.one('repos', owner).one(repo).all('pulls').getList().$object;
       }
     };
 });
