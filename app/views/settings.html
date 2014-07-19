@@ -2,19 +2,70 @@
 	<h1>Github configuration</h1>
 	
 	<form style="margin-top: 50px" class="clearfix">
-		<div class="row">
+		<div class="row sp-separator">
 			<div class="small-8">
 				<div class="row">
 					<div class="small-3 columns">
 						<label for="ssh-key" class="right inline">SSH key</label>
 					</div>
 					<div class="small-9 columns">
-						<input type="text" id="ssh-key" placeholder="Set you key here">
+						<input type="text" id="ssh-key" placeholder="Set you key here" ng-model="Settings.key" ng-init="Settings.getKey()">
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<button class="right">Save</button>
+		<div class="row sp-separator" ng-show="Settings.loaded()">
+			<div class="small-8">
+				<div class="row">
+					<div class="small-4 medium-4 large-2 columns clearfix">
+						<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar"/>
+					</div>
+					<div class="small-8 medium-8 large-10 columns">
+						<!-- name -->
+						<p>
+							<span class="text-bold">Name: </span>
+							<span>{{ Settings.profile.name }} <em>aka.</em> {{ Settings.profile.login }}</span>
+						</p>
+						<!-- company -->
+						<p ng-show="Settings.profile.company">
+							<span class="text-bold">Company: </span>
+							<span>{{ Settings.profile.company }}</span>
+						</p>
+					</div>
+				</div>
+				
+				<div class="row sp-vertical left">
+					<table>
+						<tr>
+							<th colspan="2"><input type="checkbox"/>&nbsp;My repositories</th>
+						</tr>
+						<tr ng-repeat="repo in Settings.myRepos">
+							<td><i class="fa" ng-class="{'fa-lock': repo.private}"></i></td>
+							<td>{{ repo.name }}</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="row sp-vertical sp-left left" ng-repeat="org in Settings.orgRepos">
+					<table>
+						<tr>
+							<th colspan="2">
+								<input type="checkbox"/>
+								{{ org.organization.login }}
+								<img ng-src="{{ org.organization.avatar_url }}" class="avatar-mini"/>
+							</th>
+						</tr>
+						<tr ng-repeat="repo in org">
+							<td><i class="fa" ng-class="{'fa-lock': repo.private}"></i></td>
+							<td>{{ repo.name }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<button class="right" ng-click="Settings.saveKey()">Save</button>
+		<a href="#" class="right button secondary">Back</a>
 	</form>
 </div>

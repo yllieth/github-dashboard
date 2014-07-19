@@ -7,3 +7,20 @@
 .sp-vertical { margin-top: $size-spacement / 2; margin-bottom: $size-spacement / 2; }
 .sp-horizontal { margin-left: $size-spacement / 2; margin-right: $size-spacement / 2; }
 .sp-none { margin: 0; }
+
+.sp-separator { margin-top: 2*$size-spacement; margin-bottom: 2*$size-spacement }
+.text-bold { font-weight: bold; }
+
+img.avatar {
+	width: $size-avatar;
+	height: $size-avatar;
+	border-radius: $size-avatar/2;
+}
+img.avatar-mini {
+	width: $size-avatar/3;
+	height: $size-avatar/3;
+	border-radius: $size-radius;
+}
+
+// Overrides
+p { margin-bottom: 0 }

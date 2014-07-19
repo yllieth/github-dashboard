@@ -10,7 +10,9 @@
  */
 angular
   .module('githubApp', [
-    'ngRoute'
+    'ngRoute', 
+    'restangular',
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,9 +26,15 @@ angular
       })
       .when('/settings', {
         templateUrl: 'views/settings.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        controllerAs: 'Settings'
       })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('https://api.github.com');
+    RestangularProvider.setDefaultHeaders({'Authorization': 'token d3626435e2103ca5e2ec7eaa45b777b130218b2a'});
+  })
+;
