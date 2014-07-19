@@ -51,7 +51,7 @@
 									<i class="fa fa-eye"></i>
 								</a>
 								<a ng-href="{{ pull.url }}" class="has-tooltip" 
-									 tooltip="Opened for {{  }}" tooltip-placement="right">
+									 tooltip="Opened for {{ Projects.since(pull.created_at) }}" tooltip-placement="right">
 									<i class="fa fa-clock-o"></i>
 								</a>
 							</td>

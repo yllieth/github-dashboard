@@ -25,6 +25,26 @@ angular.module('githubApp')
       return false;
     };
     
+    var getRepoListFromOwner = function(owner, me) {
+      var repoList;
+      me = me || 'me';
+      
+      if (owner === me) {
+        repoList = self.myRepos;
+      } else {
+        for (var i = 0 ; i < self.orgRepos.length ; i++) {
+          if (self.orgRepos[i].details.login === owner){
+            repoList = self.orgRepos[i].repos;
+            break;
+          }
+        }
+      }
+      
+      return repoList;
+    };
+    
+    // -----------------------------------------------------------------------------------------------------------------
+    
     this.getKey = function() {
       this.key = localStorageService.get('githubKey');
       
@@ -56,24 +76,29 @@ angular.module('githubApp')
                   details: (repos.length > 0) ? repos[0].owner : org,
                   repos: repos
                 });
+                
+                // data from localStorage
+                var selectedReposFromLS = localStorageService.get('selectedRepos');
+                if (selectedReposFromLS) {
+                  self.selectedRepos = selectedReposFromLS;
+                }
+
+                for (var i = 0 ; i < self.selectedRepos.length ; i++) {
+                  if (self.selectedRepos[i].owner === self.profile.login) {
+                    var repo = searchForRepo('name', self.selectedRepos[i].name, self.myRepos);
+                    if (repo !== false) {
+                      self.myRepos[repo.index].selected = true;
+                    }
+                  } else {
+                    var repo = searchForRepo('name', self.selectedRepos[i].name, self.orgRepos[0].repos);
+                    if (repo !== false) {
+                      self.orgRepos[0].repos[repo.index].selected = true;
+                    }
+                  }
+                }
               });
             }
           });
-
-          // data from localStorage
-          var selectedReposFromLS = localStorageService.get('selectedRepos');
-          if (selectedReposFromLS) {
-            self.selectedRepos = selectedReposFromLS;
-          }
-
-          for (var i = 0 ; i < self.selectedRepos.length ; i++) {
-            if (self.selectedRepos[i].owner === self.profile.login) {
-              var repo = searchForRepo('name', self.selectedRepos[i].name, self.myRepos);
-              if (repo !== false) {
-                self.myRepos[repo.index].selected = true;
-              }
-            }
-          }
         });
       });
     };
@@ -83,18 +108,7 @@ angular.module('githubApp')
     };
     
     this.selected = function(repoId, repoOwner){
-      var repoList;
-      if (repoOwner === 'me') {
-        repoList = this.myRepos;
-      } else {
-        for (var i = 0 ; i < this.orgRepos.length ; i++) {
-          if (this.orgRepos[i].details.login === repoOwner){
-            repoList = this.orgRepos[i].repos;
-            break;
-          }
-        }
-      }
-      
+      var repoList = getRepoListFromOwner(repoOwner);
       var repo = searchForRepo('id', repoId, repoList);
       var present = searchForRepo('name', repo.object.name, this.selectedRepos);
       if (repo !== false) {
