@@ -8,10 +8,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/compiled/main.css">
     <!-- endbuild -->
   </head>
   <body ng-app="githubApp">
@@ -21,20 +23,7 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">github</h3>
-      </div>
-
       <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
 
@@ -58,9 +47,17 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="vendor/modernizr/modernizr.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/es5-shim/es5-shim.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/json3/lib/json3.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor/fastclick/lib/fastclick.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="vendor/foundation/js/foundation.js"></script>
+    <script src="vendor/angular-foundation/mm-foundation-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
