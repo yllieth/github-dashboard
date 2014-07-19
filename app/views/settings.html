@@ -10,6 +10,7 @@
 					</div>
 					<div class="small-9 columns">
 						<input type="text" id="ssh-key" placeholder="Set you key here" ng-model="Settings.key" ng-init="Settings.getKey()">
+						<button class="right" ng-click="Settings.saveKey()">Save</button>
 					</div>
 				</div>
 			</div>
@@ -25,47 +26,59 @@
 						<!-- name -->
 						<p>
 							<span class="text-bold">Name: </span>
-							<span>{{ Settings.profile.name }} <em>aka.</em> {{ Settings.profile.login }}</span>
+							<span>{{ Settings.profile.name }} <em>aka</em> {{ Settings.profile.login }}</span>
 						</p>
-						<!-- company -->
+						<!-- companies -->
 						<p ng-show="Settings.profile.company">
 							<span class="text-bold">Company: </span>
 							<span>{{ Settings.profile.company }}</span>
 						</p>
+						<!-- selected repos -->
+						<p>
+							<span class="text-bold">Selected repos: </span>
+							<span>{{ Settings.printSelectedRepos() }}</span>
+						</p>
 					</div>
 				</div>
 				
-				<div class="row sp-vertical left">
-					<table>
-						<tr>
-							<th colspan="2"><input type="checkbox"/>&nbsp;My repositories</th>
-						</tr>
-						<tr ng-repeat="repo in Settings.myRepos">
-							<td><i class="fa" ng-class="{'fa-lock': repo.private}"></i></td>
-							<td>{{ repo.name }}</td>
-						</tr>
-					</table>
-				</div>
-				
-				<div class="row sp-vertical sp-left left" ng-repeat="org in Settings.orgRepos">
-					<table>
-						<tr>
-							<th colspan="2">
-								<input type="checkbox"/>
-								{{ org.organization.login }}
-								<img ng-src="{{ org.organization.avatar_url }}" class="avatar-mini"/>
-							</th>
-						</tr>
-						<tr ng-repeat="repo in org">
-							<td><i class="fa" ng-class="{'fa-lock': repo.private}"></i></td>
-							<td>{{ repo.name }}</td>
-						</tr>
-					</table>
+				<div class="sp-top clearfix">
+					<div class="left">
+						<table>
+							<tr>
+								<th colspan="3">
+									<!--<input type="checkbox" ng-model="Settings.all.myRepos" style="margin-right: 10px"/>-->
+									<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
+									<span>My reposiroties</span>
+								</th>
+							</tr>
+							<tr ng-repeat="repo in Settings.myRepos">
+								<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, 'me')"/></td>
+								<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, 'me')">{{ repo.name }}</td>
+								<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="sp-left left" ng-repeat="org in Settings.orgRepos">
+						<table>
+							<tr>
+								<th colspan="3">
+									<!--<input type="checkbox" style="margin-right: 10px"/>-->
+									<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
+									{{ org.details.login }}
+								</th>
+							</tr>
+							<tr ng-repeat="repo in org.repos">
+								<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, repo.owner.login)"/></td>
+								<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, repo.owner.login)">{{ repo.name }}</td>
+								<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<button class="right" ng-click="Settings.saveKey()">Save</button>
 		<a href="#" class="right button secondary">Back</a>
 	</form>
 </div>

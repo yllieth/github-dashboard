@@ -22,5 +22,7 @@ img.avatar-mini {
 	border-radius: $size-radius;
 }
 
+input[type=checkbox] { vertical-align: middle; margin: auto 0; }
+
 // Overrides
 p { margin-bottom: 0 }

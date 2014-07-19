@@ -60,7 +60,13 @@ img.avatar-mini {
   border-radius: 3px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000325}}
+input[type=checkbox] {
+  vertical-align: middle;
+  margin: auto 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000328}}
 p {
   margin-bottom: 0;
 }
