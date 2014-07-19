@@ -28,6 +28,13 @@ h3 { border-bottom: 1px solid $color-border }
 
 a[tooltip] { margin-left: $size-spacement / 4; margin-right: $size-spacement / 4; }
 
+.button-search {
+	padding: 3px 10px;
+	margin-bottom: 0;
+	background-color: $color-dark-blue;
+}
+
 // Overrides
 p { margin-bottom: 0 }
 .button.tiny { padding: 0.2rem }
+tfoot ul.pagination { margin-bottom: 0}

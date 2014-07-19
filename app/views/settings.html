@@ -43,36 +43,76 @@
 				
 				<div class="sp-top clearfix">
 					<div class="left">
-						<table>
-							<tr>
-								<th colspan="3">
-									<!--<input type="checkbox" ng-model="Settings.all.myRepos" style="margin-right: 10px"/>-->
-									<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
-									<span>My reposiroties</span>
-								</th>
-							</tr>
-							<tr ng-repeat="repo in Settings.myRepos">
-								<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, 'me')"/></td>
-								<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, 'me')">{{ repo.name }}</td>
-								<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
-							</tr>
+						<table ng-init="Settings.currentPage.me = 1">
+							<thead>
+								<tr>
+									<th colspan="3">
+										<!--<input type="checkbox" ng-model="Settings.all.myRepos" style="margin-right: 10px"/>-->
+										<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
+										<span>My reposiroties</span>
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)">
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, 'me')"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, 'me')">{{ repo.name }}</td>
+									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+								</tr>
+							</tbody>
+							
+							<tfoot>
+								<tr ng-show="Settings.myRepos.length > Settings.pagination.nbPerPage">
+									<td colspan="3">
+										<pagination total-items="Settings.myRepos.length" items-per-page="Settings.pagination.nbPerPage"
+																page="Settings.currentPage.me" 
+																max-size="Settings.pagination.max" 
+																class="pagination-sm" 
+																boundary-links="true" 
+																rotate="false" 
+																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+										></pagination>
+									</td>
+								</tr>
+							</tfoot>
 						</table>
 					</div>
 
 					<div class="sp-left left" ng-repeat="org in Settings.orgRepos">
-						<table>
-							<tr>
-								<th colspan="3">
-									<!--<input type="checkbox" style="margin-right: 10px"/>-->
-									<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
-									{{ org.details.login }}
-								</th>
-							</tr>
-							<tr ng-repeat="repo in org.repos">
-								<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, repo.owner.login)"/></td>
-								<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, repo.owner.login)">{{ repo.name }}</td>
-								<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
-							</tr>
+						<table ng-init="Settings.currentPage[org.details.login] = 1">
+							<thead>
+								<tr>
+									<th colspan="3">
+										<input type="checkbox" style="margin-right: 10px"/>
+										<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
+										{{ org.details.login }}
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)">
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, repo.owner.login)"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, repo.owner.login)">{{ repo.name }}</td>
+									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+								</tr>
+							</tbody>
+							
+							<tfoot>
+								<tr ng-show="org.repos.length > Settings.pagination.nbPerPage">
+									<td colspan="3">
+										<pagination total-items="org.repos.length" items-per-page="Settings.pagination.nbPerPage"
+																page="Settings.currentPage[org.details.login]" 
+																max-size="Settings.pagination.max" 
+																class="pagination-sm" 
+																boundary-links="true" 
+																rotate="false" 
+																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+										></pagination>
+									</td>
+								</tr>
+							</tfoot>
 						</table>
 					</div>
 				</div>

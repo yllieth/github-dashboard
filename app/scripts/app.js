@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('githubApp', [
     'ngRoute', 
     'restangular',
@@ -49,3 +49,9 @@ angular
     });
   })
 ;
+
+app.filter('slice', function() {
+  return function(arr, start, end) {
+    return (arr || []).slice(start, end);
+  };
+});

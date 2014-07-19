@@ -77,12 +77,24 @@ a[tooltip] {
   margin-right: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000331}}
+.button-search {
+  padding: 3px 10px;
+  margin-bottom: 0;
+  background-color: #004466;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000338}}
 p {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000339}}
 .button.tiny {
   padding: 0.2rem;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000340}}
+tfoot ul.pagination {
+  margin-bottom: 0;
 }

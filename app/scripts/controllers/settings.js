@@ -9,6 +9,11 @@
  */
 angular.module('githubApp')
   .controller('SettingsCtrl', function (localStorageService, github) {
+    this.pagination = {
+      nbPerPage: 8,   // max number of displayed repos on a page
+      max: 3          // max number of displayed pages, next page number will be replaced by ...
+    };
+    
     this.profile = {};
     this.selectedRepos = [];
     var self = this;
