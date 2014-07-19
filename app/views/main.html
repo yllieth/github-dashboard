@@ -20,7 +20,7 @@
 		<article ng-repeat="project in Projects.names" class="sp-bottom">
 			<h3><a href="#">{{ project.owner }}<i class="fa fa-angle-double-right sp-horizontal"></i>{{ project.name }}</a></h3>
 			
-			<div class="panel" ng-init="pulls = Projects.pullRequests[project.owner + '/' + project.name]" ng-show="pulls.length > 0">
+			<div class="panel" ng-init="pulls = Projects.pullRequests[project.owner + '/' + project.name]" ng-show="Projects.display.pullRequests && pulls.length > 0">
 				<h4>{{ pulls.length }} active pull request(s)</h4>
 				<table width="100%">
 					<thead>
