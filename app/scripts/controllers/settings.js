@@ -13,6 +13,8 @@ angular.module('githubApp')
       nbPerPage: 8,   // max number of displayed repos on a page
       max: 3          // max number of displayed pages, next page number will be replaced by ...
     };
+    this.search = {};
+    this.searchfield = {};
     
     this.profile = {};
     this.selectedRepos = [];

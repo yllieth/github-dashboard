@@ -11,6 +11,7 @@
 					<div class="small-9 columns">
 						<input type="text" id="ssh-key" placeholder="Set you key here" ng-model="Settings.key" ng-init="Settings.getKey()">
 						<button class="right" ng-click="Settings.saveKey()">Save</button>
+						<a href="#" class="right button secondary">Back</a>
 					</div>
 				</div>
 			</div>
@@ -47,15 +48,25 @@
 							<thead>
 								<tr>
 									<th colspan="3">
-										<!--<input type="checkbox" ng-model="Settings.all.myRepos" style="margin-right: 10px"/>-->
-										<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
-										<span>My reposiroties</span>
+										<span ng-hide="Settings.search.me">
+											<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
+											<span>My reposiroties</span>
+										</span>
+										<span ng-show="Settings.search.me">
+											<input type="search" ng-model="Settings.searchfield.me" class="left" placeholder="Enter a repository name"/>
+										</span>
+										<span class="right">
+											<button class="button-search radius" ng-click="Settings.search.me = !Settings.search.me">
+												<i class="fa" ng-class="{'fa-search': !Settings.search.me, 'fa-times-circle-o': Settings.search.me}"></i>
+											</button>
+										</span>
 									</th>
 								</tr>
 							</thead>
 							
 							<tbody>
-								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)">
+								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)
+																												| filter: Settings.searchfield.me">
 									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, 'me')"/></td>
 									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, 'me')">{{ repo.name }}</td>
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
@@ -84,15 +95,25 @@
 							<thead>
 								<tr>
 									<th colspan="3">
-										<input type="checkbox" style="margin-right: 10px"/>
-										<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
-										{{ org.details.login }}
+										<span ng-hide="Settings.search[org.details.login]">
+											<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
+											<span>{{ org.details.login }}</span>
+										</span>
+										<span ng-show="Settings.search[org.details.login]">
+											<input type="search" ng-model="Settings.searchfield[org.details.login]" class="left" placeholder="Enter a repository name"/>
+										</span>
+										<span class="right">
+											<button class="button-search radius" ng-click="Settings.search[org.details.login] = !Settings.search[org.details.login]">
+												<i class="fa" ng-class="{'fa-search': !Settings.search[org.details.login], 'fa-times-circle-o': Settings.search[org.details.login]}"></i>
+											</button>
+										</span>
 									</th>
 								</tr>
 							</thead>
 							
 							<tbody>
-								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)">
+								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)
+										                             | filter: Settings.searchfield[org.details.login]">
 									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, repo.owner.login)"/></td>
 									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, repo.owner.login)">{{ repo.name }}</td>
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
@@ -118,7 +139,5 @@
 				</div>
 			</div>
 		</div>
-		
-		<a href="#" class="right button secondary">Back</a>
 	</form>
 </div>
