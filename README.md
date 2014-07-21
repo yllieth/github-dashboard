@@ -29,7 +29,7 @@ Take a look on these screenshot :
 
 ![Alt text](/doc/readme_main_20140719.png?raw=true)
 
-![Alt text](/doc/readme_settings_20140719.png?raw=true)
+![Alt text](/doc/readme_settings_20140721.png?raw=true)
 
 ## Project development
 
