@@ -34,23 +34,23 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="pull in pulls">
-							<td><i class="fa fa-code-fork"></i>&nbsp;{{ pull.number }}</td>
-							<td>{{ pull.branch.ref }}</td>
-							<td><i class="fa fa-arrow-circle-o-right"></i></td>
-							<td>{{ pull.base.ref }}</td>
-							<td>
+							<td class="pr-col-id"><i class="fa fa-code-fork"></i>&nbsp;{{ pull.number }}</td>
+							<td class="pr-col-from">{{ pull.branch.ref }}</td>
+							<td class="pr-col-arrow"><i class="fa fa-arrow-circle-o-right"></i></td>
+							<td class="pr-col-to">{{ pull.base.ref }}</td>
+							<td class="pr-col-infos">
 								<span>
 									<img ng-src="{{ pull.user.avatar_url }}" class="avatar-mini has-tooltip" 
 											 tooltip="{{ pull.user.login }}" tooltip-placement="bottom"/>
 								</span>
-								<em>{{ pull.title | limitTo:30 }}...</em>
+								<em>{{ pull.title }}</em>
 							</td>
-							<td>
-								<a ng-href="{{ pull.html_url }}" class="has-tooltip" 
-									 tooltip="View this Pull Request on github" tooltip-placement="bottom">
+							<td class="pr-col-icons">
+								<a ng-href="{{ pull.html_url }}" class="has-tooltip sp-horizontal" 
+									 tooltip="View this Pull Request on github" tooltip-placement="left">
 									<i class="fa fa-eye"></i>
 								</a>
-								<a class="has-tooltip" tooltip="Opened for {{ Projects.since(pull.created_at) }}" tooltip-placement="right">
+								<a class="has-tooltip sp-horizontal" tooltip="Opened for {{ Projects.since(pull.created_at) }}" tooltip-placement="left">
 									<i class="fa fa-clock-o"></i>
 								</a>
 							</td>
