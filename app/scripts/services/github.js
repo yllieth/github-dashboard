@@ -28,6 +28,10 @@ angular.module('githubApp')
 
       getPullRequest: function(owner, repo) {
         return Restangular.one('repos', owner).one(repo).all('pulls').getList().$object;
+      },
+      
+      getIssues: function(owner, repo) {
+        return Restangular.one('repos', owner).one(repo).all('issues').getList().$object;
       }
     };
 });

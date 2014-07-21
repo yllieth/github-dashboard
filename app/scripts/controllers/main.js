@@ -10,6 +10,8 @@
 angular.module('githubApp')
   .controller('MainCtrl', function (localStorageService, github) {
     var self = this;
+    this.pullRequests = {};
+    this.issues = {};
   
     this.display = {
       pullRequests: true
@@ -33,6 +35,15 @@ angular.module('githubApp')
       }
     };
     
+    this.getIssues = function() {
+      if (this.display.issues === true) {
+        for (var i = 0 ; i < this.names.length ; i++) {
+          var repo = this.names[i];
+          this.issues[repo.owner + '/' + repo.name] = github.getIssues(repo.owner, repo.name);
+        }
+      }
+    };
+    
     this.reset = function() {
       this.pullRequests = {};
     };
@@ -41,7 +52,6 @@ angular.module('githubApp')
       var creationDate = new Date(createdAt);
       var nowDate = new Date();
       
-      var diff = '';
       var diffMs = nowDate - creationDate;
       var diffSec = Math.round(diffMs/1000);
       var diffMin = Math.round(diffSec/60); if (diffMin === 0) { return diffSec + ' seconde' + ((diffSec > 1) ? 's' : ''); }
