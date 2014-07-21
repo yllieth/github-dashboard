@@ -8,7 +8,7 @@
  * Controller of the githubApp
  */
 angular.module('githubApp')
-  .controller('SettingsCtrl', function (localStorageService, github, $http) {
+  .controller('SettingsCtrl', function (localStorageService, github, Restangular) {
     this.pagination = {
       nbPerPage: 8,   // max number of displayed repos on a page
       max: 3          // max number of displayed pages, next page number will be replaced by ...
@@ -56,26 +56,21 @@ angular.module('githubApp')
       OAuth.initialize((fullAccess === true) ? 'H9DJ6ZpMKMX0yR7asJny6tamHhQ' : 'KY7eN-DfVV3M0S0C4q_VrQf1yhU');
       OAuth.popup('github')
           .done(function(result) {
-            self.key = result.access_token;
-            self.saveKey();
+            localStorageService.set('githubKey', result.access_token);
+            localStorageService.set('githubType', (fullAccess === true) ? 'full' : 'public');
+            self.init();
           })
           .fail(function (err) {
             console.log(err);
       });
     };
 
-    this.getKey = function() {
+    this.init = function() {
       this.key = localStorageService.get('githubKey');
 
       if (this.key && this.key.length > 0) {
         this.loadProfile();
       }
-    };
-
-		this.saveKey = function() {
-      localStorageService.set('githubKey', this.key);
-
-      this.loadProfile();
     };
 
     this.loadProfile = function() {

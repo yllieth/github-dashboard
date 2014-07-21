@@ -1,4 +1,4 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000033}}
 .sp-top {
   margin-top: 20px;
 }
@@ -110,4 +110,10 @@ tfoot ul.pagination {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000342}}
 button.success:hover, button.success:focus {
   background-color: #008800;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000343}}
+.button.secondary:hover, .button.secondary:focus {
+  background-color: #c6c6c5;
+  color: white;
 }

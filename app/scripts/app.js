@@ -49,7 +49,29 @@ var app = angular
       return data;
     });
   })
-;
+  .config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    $httpProvider.interceptors.push(function(localStorageService) {
+      var externalRequestMatcher = /^https?/;
+
+      return {
+        request: function(config) {
+          if (config.url.match(externalRequestMatcher)) {
+            var token = localStorageService.get('githubKey');
+
+            if (!!token) {
+              config.headers['Authorization'] = 'Bearer ' + token;
+            }
+          }
+
+          return config;
+        }
+      };
+    });
+  });
+
 
 app.filter('slice', function() {
   return function(arr, start, end) {
