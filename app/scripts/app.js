@@ -10,7 +10,7 @@
  */
 var app = angular
   .module('githubApp', [
-    'ngRoute', 
+    'ngRoute',
     'restangular',
     'LocalStorageModule',
     'mm.foundation'
@@ -37,7 +37,8 @@ var app = angular
   })
   .config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('https://api.github.com');
-    RestangularProvider.setDefaultHeaders({'Authorization': 'token d3626435e2103ca5e2ec7eaa45b777b130218b2a'});
+    //1328c5eabfda988998a9191fedd7707db5d4cdb6
+    //RestangularProvider.setDefaultHeaders({'Authorization': 'token d3626435e2103ca5e2ec7eaa45b777b130218b2a'});
     RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
       if (operation === 'getList' && what === 'pulls') {
         for (var i = 0 ; i < data.length ; i++) {

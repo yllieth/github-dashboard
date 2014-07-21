@@ -1,31 +1,16 @@
 <div class="panel">
 	<h1>Github configuration</h1>
-	
+
 	<form style="margin-top: 50px" class="clearfix">
 		<div class="row">
 			<button class="expand success" ng-click="Settings.authenticate(true)">
 				Connect to your GitHub account<br/><small>Access to both public and private repos</small>
 			</button>
-			<button class="expand">
+			<button class="expand" ng-click="Settings.authenticate(false)">
 				Connect to your GitHub account<br/><small>Only acces public repos</small>
 			</button>
 		</div>
-			
-		<div class="row sp-separator">
-			<div class="small-8">
-				<div class="row">
-					<div class="small-3 columns">
-						<label for="ssh-key" class="right inline">SSH key</label>
-					</div>
-					<div class="small-9 columns">
-						<input type="text" id="ssh-key" placeholder="Set you key here" ng-model="Settings.key" ng-init="Settings.getKey()">
-						<button class="right" ng-click="Settings.saveKey()">Save</button>
-						<a href="#" class="right button secondary">Back</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+
 		<div class="row sp-separator" ng-show="Settings.loaded()">
 			<div>
 				<div class="row">
@@ -50,7 +35,7 @@
 						</p>
 					</div>
 				</div>
-				
+
 				<div class="sp-top clearfix">
 					<div class="left">
 						<table ng-init="Settings.currentPage.me = 1">
@@ -72,7 +57,7 @@
 									</th>
 								</tr>
 							</thead>
-							
+
 							<tbody>
 								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)
 																												| filter: Settings.searchfield.me">
@@ -81,16 +66,16 @@
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
 								</tr>
 							</tbody>
-							
+
 							<tfoot>
 								<tr ng-show="Settings.myRepos.length > Settings.pagination.nbPerPage">
 									<td colspan="3">
 										<pagination total-items="Settings.myRepos.length" items-per-page="Settings.pagination.nbPerPage"
-																page="Settings.currentPage.me" 
-																max-size="Settings.pagination.max" 
-																class="pagination-sm" 
-																boundary-links="true" 
-																rotate="false" 
+																page="Settings.currentPage.me"
+																max-size="Settings.pagination.max"
+																class="pagination-sm"
+																boundary-links="true"
+																rotate="false"
 																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
 										></pagination>
 									</td>
@@ -119,7 +104,7 @@
 									</th>
 								</tr>
 							</thead>
-							
+
 							<tbody>
 								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)
 										                             | filter: Settings.searchfield[org.details.login]">
@@ -128,16 +113,16 @@
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
 								</tr>
 							</tbody>
-							
+
 							<tfoot>
 								<tr ng-show="org.repos.length > Settings.pagination.nbPerPage">
 									<td colspan="3">
 										<pagination total-items="org.repos.length" items-per-page="Settings.pagination.nbPerPage"
-																page="Settings.currentPage[org.details.login]" 
-																max-size="Settings.pagination.max" 
-																class="pagination-sm" 
-																boundary-links="true" 
-																rotate="false" 
+																page="Settings.currentPage[org.details.login]"
+																max-size="Settings.pagination.max"
+																class="pagination-sm"
+																boundary-links="true"
+																rotate="false"
 																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
 										></pagination>
 									</td>

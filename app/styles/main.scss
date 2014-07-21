@@ -39,3 +39,6 @@ a[tooltip] { margin-left: $size-spacement / 4; margin-right: $size-spacement / 4
 p { margin-bottom: 0 }
 .button.tiny { padding: 0.2rem }
 tfoot ul.pagination { margin-bottom: 0}
+button.success:hover, button.success:focus { 
+  background-color: $color-dark-green;
+}

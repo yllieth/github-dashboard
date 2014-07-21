@@ -3,70 +3,70 @@
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000034}}
 .sp-left {
   margin-left: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000035}}
 .sp-right {
   margin-right: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000036}}
 .sp-bottom {
   margin-bottom: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000037}}
 .sp-vertical {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000038}}
 .sp-horizontal {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\000039}}
 .sp-none {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000311}}
 .sp-separator {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000312}}
 .text-bold {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000314}}
 img.avatar {
   width: 75px;
   height: 75px;
   border-radius: 37.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000319}}
 img.avatar-mini {
   width: 25px;
   height: 25px;
   border-radius: 3px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000325}}
 input[type=checkbox] {
   vertical-align: middle;
   margin: auto 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000326}}
 input[type=search] {
   width: 80%;
   height: 1.7rem;
@@ -74,35 +74,40 @@ input[type=search] {
   padding: 0 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000328}}
 h3 {
   border-bottom: 1px solid #c6c6c6;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000330}}
 a[tooltip] {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000332}}
 .button-search {
   padding: 3px 10px;
   margin-bottom: 0;
   background-color: #004466;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000339}}
 p {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000340}}
 .button.tiny {
   padding: 0.2rem;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/srGithubPRs\/app\/styles\/main\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000341}}
 tfoot ul.pagination {
   margin-bottom: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000342}}
+button.success:hover, button.success:focus {
+  background-color: #008800;
 }

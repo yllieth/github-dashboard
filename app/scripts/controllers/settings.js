@@ -15,11 +15,11 @@ angular.module('githubApp')
     };
     this.search = {};
     this.searchfield = {};
-    
+
     this.profile = {};
     this.selectedRepos = [];
     var self = this;
-    
+
     var searchForRepo = function(property, value, repoList) {
       if (angular.isArray(repoList)) {
         for (var i = 0 ; i < repoList.length ; i++) {
@@ -28,14 +28,14 @@ angular.module('githubApp')
           }
         }
       }
-      
+
       return false;
     };
-    
+
     var getRepoListFromOwner = function(owner, me) {
       var repoList;
       me = me || 'me';
-      
+
       if (owner === me) {
         repoList = self.myRepos;
       } else {
@@ -46,79 +46,47 @@ angular.module('githubApp')
           }
         }
       }
-      
+
       return repoList;
     };
-    
-    var makeId = function(size) {
-      var text = "";
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      
-      for( var i=0 ; i < size ; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      
-      return text;
-    };
-    
+
     // -----------------------------------------------------------------------------------------------------------------
-    
+
     this.authenticate = function(fullAccess) {
-      OAuth.initialize('f012ac1b665105299a37');
-      
-//      var state = makeId(64);
-//      var params = {
-//        redirect_uri: 'http://localhost/github-dashboard/app',
-////        scope: 'repo,user',
-////        state: state
-//      };
-      
-      if (fullAccess === true) {
-        
-//        $.extend(params, {client_id: 'f012ac1b665105299a37'});
-//        
-//        $http
-//          .get('https://github.com/login/oauth/authorize?' + $.param(params))
-//          .success(function(response) {
-//            $http
-//              .post('https://github.com/login/oauth/access_token', {
-//                client_id: params.client_id,
-//                client_secret: '22a1706e0e6a94f15748ef536871a985ac851376',
-//                code: response.code,
-//                redirect_uri: params.redirect_uri
-//              })
-//              .success(function(response) {
-//                alert('authenticated !!');
-//              })
-//            ;
-//          })
-//        ;
-      }
+      OAuth.initialize((fullAccess === true) ? 'H9DJ6ZpMKMX0yR7asJny6tamHhQ' : 'KY7eN-DfVV3M0S0C4q_VrQf1yhU');
+      OAuth.popup('github')
+          .done(function(result) {
+            self.key = result.access_token;
+            self.saveKey();
+          })
+          .fail(function (err) {
+            console.log(err);
+      });
     };
-    
+
     this.getKey = function() {
       this.key = localStorageService.get('githubKey');
-      
-      if (this.key.length > 0) {
+
+      if (this.key && this.key.length > 0) {
         this.loadProfile();
       }
     };
-    
+
 		this.saveKey = function() {
       localStorageService.set('githubKey', this.key);
-//      window.alert('key saved !!\n\n' + this.key);
-      
+
       this.loadProfile();
     };
-    
+
     this.loadProfile = function() {
       // data from github
-      github.getUserDetails().then(function(profile) { 
-        self.profile = profile; 
-        
-        github.getUserRepos().then(function(repos) { 
-          self.myRepos = repos; 
-        
-          github.getOrgsRepos().then(function(orgs) { 
+      github.getUserDetails().then(function(profile) {
+        self.profile = profile;
+
+        github.getUserRepos().then(function(repos) {
+          self.myRepos = repos;
+
+          github.getOrgsRepos().then(function(orgs) {
             self.orgRepos = [];
             for (var org in orgs) {
               orgs[org].then(function(repos) {
@@ -126,7 +94,7 @@ angular.module('githubApp')
                   details: (repos.length > 0) ? repos[0].owner : org,
                   repos: repos
                 });
-                
+
                 // data from localStorage
                 var selectedReposFromLS = localStorageService.get('selectedRepos');
                 if (selectedReposFromLS) {
@@ -152,11 +120,11 @@ angular.module('githubApp')
         });
       });
     };
-    
+
     this.loaded = function() {
       return Object.keys(self.profile).length > 0;
     };
-    
+
     this.selected = function(repoId, repoOwner){
       var repoList = getRepoListFromOwner(repoOwner);
       var repo = searchForRepo('id', repoId, repoList);
@@ -180,7 +148,7 @@ angular.module('githubApp')
         }
       }
     };
-    
+
     this.printSelectedRepos = function() {
       return $.map(this.selectedRepos, function(val, i) { return val.name; }).join(', ');
     };
