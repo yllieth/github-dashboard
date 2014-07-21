@@ -8,7 +8,7 @@
  * Controller of the githubApp
  */
 angular.module('githubApp')
-  .controller('SettingsCtrl', function (localStorageService, github) {
+  .controller('SettingsCtrl', function (localStorageService, github, $http) {
     this.pagination = {
       nbPerPage: 8,   // max number of displayed repos on a page
       max: 3          // max number of displayed pages, next page number will be replaced by ...
@@ -50,7 +50,50 @@ angular.module('githubApp')
       return repoList;
     };
     
+    var makeId = function(size) {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+      for( var i=0 ; i < size ; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+      return text;
+    };
+    
     // -----------------------------------------------------------------------------------------------------------------
+    
+    this.authenticate = function(fullAccess) {
+      OAuth.initialize('f012ac1b665105299a37');
+      
+//      var state = makeId(64);
+//      var params = {
+//        redirect_uri: 'http://localhost/github-dashboard/app',
+////        scope: 'repo,user',
+////        state: state
+//      };
+      
+      if (fullAccess === true) {
+        
+//        $.extend(params, {client_id: 'f012ac1b665105299a37'});
+//        
+//        $http
+//          .get('https://github.com/login/oauth/authorize?' + $.param(params))
+//          .success(function(response) {
+//            $http
+//              .post('https://github.com/login/oauth/access_token', {
+//                client_id: params.client_id,
+//                client_secret: '22a1706e0e6a94f15748ef536871a985ac851376',
+//                code: response.code,
+//                redirect_uri: params.redirect_uri
+//              })
+//              .success(function(response) {
+//                alert('authenticated !!');
+//              })
+//            ;
+//          })
+//        ;
+      }
+    };
     
     this.getKey = function() {
       this.key = localStorageService.get('githubKey');
