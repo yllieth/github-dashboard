@@ -10,8 +10,18 @@
 angular.module('githubApp')
   .controller('SettingsCtrl', function (localStorageService, github, Restangular) {
     this.pagination = {
-      nbPerPage: 8,   // max number of displayed repos on a page
-      max: 3          // max number of displayed pages, next page number will be replaced by ...
+      nbPerPage: 8,    // max number of displayed repos on a page
+      max: 3,          // max number of displayed pages, next page number will be replaced by ...
+      emptyLinesIterator: function(numberItems) {
+        var nbEmptyLines = (self.pagination.nbPages(numberItems) * self.pagination.nbPerPage) - numberItems;
+        var iterator = [];
+        for (var i = 0; i < nbEmptyLines; i++) { iterator.push(i); }
+        
+        return iterator;
+      },
+      nbPages: function(numberItems) {
+        return Math.ceil(numberItems / self.pagination.nbPerPage);
+      }
     };
     this.search = {};
     this.searchfield = {};

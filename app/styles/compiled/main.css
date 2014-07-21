@@ -85,34 +85,39 @@ a[tooltip] {
   margin-right: 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000331}}
+td {
+  height: 40px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000333}}
 .button-search {
   padding: 3px 10px;
   margin-bottom: 0;
   background-color: #004466;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000340}}
 p {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000341}}
 .button.tiny {
   padding: 0.2rem;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000342}}
 tfoot ul.pagination {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000343}}
 button.success:hover, button.success:focus {
   background-color: #008800;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000344}}
 .button.secondary:hover, .button.secondary:focus {
   background-color: #c6c6c5;
   color: white;

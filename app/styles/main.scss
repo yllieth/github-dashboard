@@ -28,6 +28,7 @@ input[type=search] { width: 80%; height: 1.7rem; margin-bottom: 0; padding: 0 5p
 h3 { border-bottom: 1px solid $color-border }
 
 a[tooltip] { margin-left: $size-spacement / 4; margin-right: $size-spacement / 4; }
+td { height: 40px }
 
 .button-search {
 	padding: 3px 10px;
