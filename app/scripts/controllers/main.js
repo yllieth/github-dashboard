@@ -12,30 +12,33 @@ angular.module('githubApp')
     var self = this;
     this.pullRequests = {};
     this.issues = {};
-  
+
     this.display = {
-      pullRequests: true
+      pullRequests: true,
+      issues: true
     };
-    
+
     this.repositories = function() {
       this.names = localStorageService.get('selectedRepos');
     };
-    
+
     this.getData = function() {
-      if (this.display.pullRequests) {
-        this.getPullRequests();
-      }
+      if (this.display.pullRequests === true) { this.getPullRequests(); }
+      if (this.display.issues === true) { this.getIssues(); }
     };
-    
+
     this.getPullRequests = function() {
       this.pullRequests = {};
-      for (var i = 0 ; i < this.names.length ; i++) {
-        var repo = this.names[i];
-        this.pullRequests[repo.owner + '/' + repo.name] = github.getPullRequest(repo.owner, repo.name);
+      if (this.display.pullRequests === true) {
+        for (var i = 0 ; i < this.names.length ; i++) {
+          var repo = this.names[i];
+          this.pullRequests[repo.owner + '/' + repo.name] = github.getPullRequest(repo.owner, repo.name);
+        }
       }
     };
-    
+
     this.getIssues = function() {
+      this.issues = {};
       if (this.display.issues === true) {
         for (var i = 0 ; i < this.names.length ; i++) {
           var repo = this.names[i];
@@ -43,22 +46,22 @@ angular.module('githubApp')
         }
       }
     };
-    
+
     this.reset = function() {
       this.pullRequests = {};
     };
-    
+
     this.since = function(createdAt) {
       var creationDate = new Date(createdAt);
       var nowDate = new Date();
-      
+
       var diffMs = nowDate - creationDate;
       var diffSec = Math.round(diffMs/1000);
       var diffMin = Math.round(diffSec/60); if (diffMin === 0) { return diffSec + ' seconde' + ((diffSec > 1) ? 's' : ''); }
       var diffHrs = Math.round(diffMin/60); if (diffHrs === 0) { return diffMin + ' minute' + ((diffMin > 1) ? 's' : ''); }
       var diffDay = Math.round(diffHrs/24); if (diffDay === 0) { return diffHrs + ' hour' + ((diffHrs > 1) ? 's' : ''); }
-      var diffMth = Math.round(diffDay/30); if (diffMth === 0) { return diffDay + ' day' + ((diffDay > 1) ? 's' : ''); } 
-      
+      var diffMth = Math.round(diffDay/30); if (diffMth === 0) { return diffDay + ' day' + ((diffDay > 1) ? 's' : ''); }
+
       return diffMth + ' month' + ((diffMth > 1) ? 's' : '');
     };
   })

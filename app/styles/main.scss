@@ -36,10 +36,11 @@ td { height: 40px }
 	background-color: $color-dark-blue;
 }
 
-.pr-col-id { width: 60px }
+.pr-col-id, .issue-col-id { width: 65px }
 .pr-col-arrow { width: 15px }
-.pr-col-icons { width: 40px }
+.pr-col-icons, .issue-col-icons { width: 40px }
 .pr-col-from, .pr-col-to, .pr-col-infos { width: auto; }
+.issue-col-people { width: 100px }
 
 // Overrides
 p { margin-bottom: 0 }
