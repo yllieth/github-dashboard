@@ -22,10 +22,6 @@ var app = angular
         controller: 'MainCtrl',
         controllerAs: 'Projects'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/settings', {
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl',
