@@ -13,14 +13,14 @@ angular.module('githubApp')
   .controller('MainCtrl', function (localStorageService, github) {
     var self = this;
     this.names = [];
-    this.pullRequests = [];
-    this.issues = [];
+    this.pullRequests = {};
+    this.issues = {};
 
     /**
      * @property {Object.boolean} Tells wich feature has to be displayed
      * 
      * Note: For each property of this object, this controller has 
-     * - an array with the same name wich contains data (ex: @link pullRequests)
+     * - an object with the same name wich contains data (ex: @link pullRequests)
      * - a getter function to fetch data from github (ex: @link getPullRequests())
      */
     this.display = {
@@ -60,14 +60,15 @@ angular.module('githubApp')
      * @returns {void}
      */
     this.reset = function() {
-      this.pullRequests = [];
-      this.issues = [];
+      this.pullRequests = {};
+      this.issues = {};
     };
 
     // -----------------------------------------------------------------------------------------------------------------
     
     this.getPullRequests = function() {
-      this.pullRequests = [];
+      this.pullRequests = {};
+      
       if (this.display.pullRequests === true) {
         for (var i = 0 ; i < this.names.length ; i++) {
           var repo = this.names[i];
@@ -77,11 +78,12 @@ angular.module('githubApp')
     };
 
     this.getIssues = function() {
-      this.issues = [];
+      this.issues = {};
+      
       if (this.display.issues === true) {
         for (var i = 0 ; i < this.names.length ; i++) {
           var repo = this.names[i];
-          this.issues[repo.owner + '/' + repo.name] = github.getIssues(repo.owner, repo.name);
+          this.issues[repo.owner + '/' + repo.name] = github.getIssues(repo.owner, repo.name);;
         }
       }
     };

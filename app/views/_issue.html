@@ -1,4 +1,4 @@
-<h4>{{ issues.length }} issue(s)</h4>
+<h4>{{ Projects.issues[key].length }} issue(s)</h4>
 <table width="100%">
 	<thead>
 		<tr>
@@ -10,7 +10,7 @@
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="issue in issues">
+		<tr ng-repeat="issue in Projects.issues[key]">
 			
 			<!-- Identifier -->
 			<td class="issue-col-id"><i class="fa fa-bug"></i>&nbsp;{{ issue.number }}</td>

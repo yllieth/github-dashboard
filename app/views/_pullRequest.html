@@ -1,4 +1,4 @@
-<h4>{{ pulls.length }} active pull request(s)</h4>
+<h4>{{ Projects.pullRequests[key].length }} active pull request(s)</h4>
 <table width="100%">
 	<thead>
 		<tr>
@@ -11,7 +11,7 @@
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="pull in pulls">
+		<tr ng-repeat="pull in Projects.pullRequests[key]">
 			
 			<!-- Identifier -->
 			<td class="pr-col-id"><i class="fa fa-code-fork"></i>&nbsp;{{ pull.number }}</td>
