@@ -1,5 +1,5 @@
 <div class="panel" ng-init="Settings.init()">
-	<formclass="clearfix sp-top">
+	<form class="clearfix sp-top">
 		<div class="row">
 			<button class="expand success" ng-click="Settings.authenticate(true)">
 				Connect to your GitHub account<br/>
@@ -145,9 +145,60 @@
 				</div>
 			</div>
 		</div>
+		
+		<hr />
 
     <div class="row">
-      <a class="button expand secondary" href="#">Back to your dashboard</a>
+      <a class="button expand secondary sp-none" href="#">Back to your dashboard</a>
     </div>
+		
+		<hr />
+		
+		<div class="row">
+			<div>
+				<table width="100%">
+					<tr>
+						<td colspan="2">
+							<p>If you want to follow some other public repositories, please provide the url in the field below :</p>
+							<input type="text" placeholder="Repository URL (https://github.com/yllieth/github-dashboard)"
+										 ng-model="Settings.extraRepo.url"
+										 ng-change="Settings.url2Repo()"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="row collapse">
+								<div class="small-3 large-2 columns">
+									<span class="prefix">Owner :</span>
+								</div>
+								<div class="small-9 large-10 columns">
+									<input type="text" disabled="disabled" ng-model="Settings.extraRepo.owner" />
+								</div>
+							</div>
+						</td>
+						<td rowspan="2">
+							<button class="expand sp-none"
+											style="height: 122%"
+											ng-click="Settings.addExtraRepo()"
+											ng-disabled="Settings.extraRepo.invalid">
+								Add
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="row collapse">
+								<div class="small-3 large-2 columns">
+									<span class="prefix">Project name :</span>
+								</div>
+								<div class="small-9 large-10 columns">
+									<input type="text" disabled="disabled" ng-model="Settings.extraRepo.name" />
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 	</form>
 </div>

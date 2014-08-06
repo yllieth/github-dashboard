@@ -10,7 +10,7 @@
 angular.module('githubApp')
   .controller('SettingsCtrl', function (localStorageService, github, Restangular) {
     this.pagination = {
-      nbPerPage: 8,    // max number of displayed repos on a page
+      nbPerPage: 6,    // max number of displayed repos on a page
       max: 3,          // max number of displayed pages, next page number will be replaced by ...
       emptyLinesIterator: function(numberItems) {
         var nbEmptyLines = (self.pagination.nbPages(numberItems) * self.pagination.nbPerPage) - numberItems;
@@ -28,6 +28,7 @@ angular.module('githubApp')
 
     this.profile = {};
     this.selectedRepos = [];
+    this.extraRepo = {invalid: true};
     var self = this;
 
     var searchForRepo = function(property, value, repoList) {
@@ -156,6 +157,25 @@ angular.module('githubApp')
 
     this.printSelectedRepos = function() {
       return $.map(this.selectedRepos, function(val, i) { return val.name; }).join(', ');
+    };
+    
+    this.url2Repo = function() {
+      var parse = this.extraRepo.url.match(/https:\/\/github.com\/([a-zA-Z0-9\_\-]*)\/([a-zA-Z0-9\_\-]*)/);
+      if (angular.isArray(parse)) {
+        this.extraRepo.owner = parse[1];
+        this.extraRepo.name = parse[2];
+        this.extraRepo.invalid = false;
+      } else {
+        this.extraRepo.owner = '';
+        this.extraRepo.name = '';
+        this.extraRepo.invalid = true;
+      }
+    };
+    
+    this.addExtraRepo = function(){
+      var newRepo = { owner: this.extraRepo.owner, name: this.extraRepo.name };
+      this.selectedRepos.push(newRepo);
+      localStorageService.set('selectedRepos', JSON.stringify(this.selectedRepos));
     };
   })
 ;

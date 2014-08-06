@@ -22,6 +22,7 @@ img.avatar-mini {
 	border-radius: $size-radius;
 }
 
+input[type=text] { margin-bottom: 0; }
 input[type=checkbox] { vertical-align: middle; margin: auto 0; }
 input[type=search] { width: 80%; height: 1.7rem; margin-bottom: 0; padding: 0 5px; }
 
@@ -73,3 +74,4 @@ tfoot ul.pagination { margin-bottom: 0}
 .button.success:hover, .button.success:focus { background-color: $color-dark-green; font-weight: bold; }
  button.secondary:hover,  button.secondary:focus, 
 .button.secondary:hover, .button.secondary:focus { background-color: $color-grey; font-weight: bold; color: white; }
+button[disabled=disabled], .button[disabled=disabled] { font-weight: normal; cursor: not-allowed; }
