@@ -35,13 +35,18 @@ angular.module('githubApp')
      * 
      * The `names` array will contain objects like :
      * ```
-     * {owner: 'MyCompany', name: 'MyRepositoryName'}
+     * {owner: 'MyCompany', name: 'MyRepositoryName', url: 'https://github.com/MyCompany/Myrepositoryname'}
      * ```
      * 
      * @returns {void}
      */
     this.repositories = function() {
       this.names = localStorageService.get('selectedRepos');
+      
+      // add url to the stored value
+      for (var i = 0; i < this.names.length; i++) {
+        this.names[i].url = 'https://github.com/' + this.names[i].owner + '/' + this.names[i].name;
+      }
     };
 
     /**

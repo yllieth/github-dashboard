@@ -21,7 +21,7 @@
 			ng-init="key = project.owner + '/' + project.name">
 			
 			<h3>
-				<a href="#">
+				<a ng-href="{{ project.url }}" target="_blank">
 					{{ project.owner }}
 					<i class="fa fa-angle-double-right sp-horizontal"></i>
 					{{ project.name }}
