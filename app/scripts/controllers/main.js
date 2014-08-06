@@ -68,6 +68,22 @@ angular.module('githubApp')
       this.pullRequests = {};
       this.issues = {};
     };
+    
+    /**
+     * Returns the number of displayed features
+     * 
+     * @returns {Number}
+     */
+    this.getNbFeatures = function() {
+      var nb = 0;
+      for (var i = 0; i < this.display.length; i++) {
+        if (this.display[i] === true) {
+          nb++;
+        }
+      }
+      
+      return nb;
+    };
 
     // -----------------------------------------------------------------------------------------------------------------
     

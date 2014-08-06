@@ -15,10 +15,11 @@
 
 
 <div class="row">
-	<div class="large-9 columns" ng-init="Projects.repositories(); Projects.getData()">
+	<div class="large-9 columns" ng-init="Projects.repositories(); Projects.getData(); mode = 'collapsed'">
 		<article class="sp-bottom"
-			ng-repeat="project in Projects.names"
-			ng-init="key = project.owner + '/' + project.name">
+						 ng-class="{'large-4 left panel reduced': mode == 'collapsed'}"
+						 ng-repeat="project in Projects.names"
+						 ng-init="key = project.owner + '/' + project.name">
 			
 			<h3>
 				<a ng-href="{{ project.url }}" target="_blank">
@@ -28,14 +29,14 @@
 				</a>
 			</h3>
 
-			<div class="panel" 
-					 ng-show="Projects.display.pullRequests && Projects.pullRequests[key].length > 0"
+			<div
+					 ng-show="Projects.display.pullRequests"
 					 ng-include="'views/_pullRequest.html'"
 			></div>
 
 
-      <div class="panel" 
-					 ng-show="Projects.display.issues && Projects.issues[key].length > 0"
+      <div
+					 ng-show="Projects.display.issues"
 					 ng-include="'views/_issue.html'"
 			></div>
 		</article>
@@ -68,6 +69,22 @@
 				<label for="display-issues">Issues</label>
 			</p>
 		</div>
+		
+		<!-- Expand reduced blocks -->
+		<button class="expand success radius" 
+						ng-show="mode == 'collapsed'" 
+						ng-click="mode = 'expanded'">
+			<i class="fa fa-expand"></i>
+			Expand all
+		</button>
+		
+		<!-- Collapsed enlarged blocks -->
+		<button class="expand success radius" 
+						ng-show="mode == 'expanded'" 
+						ng-click="mode = 'collapsed'">
+			<i class="fa fa-compress"></i>
+			Collapse all
+		</button>
 	</aside>
 </div>
 

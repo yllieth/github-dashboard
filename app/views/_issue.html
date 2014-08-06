@@ -1,53 +1,68 @@
-<h4>{{ Projects.issues[key].length }} issue(s)</h4>
-<table width="100%">
-	<thead>
-		<tr>
-			<th></th>
-			<th>People</th>
-			<th>Description</th>
-			<th></th>
-		</tr>
-	</thead>
-	
-	<tbody>
-		<tr ng-repeat="issue in Projects.issues[key]">
-			
-			<!-- Identifier -->
-			<td class="issue-col-id"><i class="fa fa-bug"></i>&nbsp;{{ issue.number }}</td>
-			
-			<!-- Reporter / Assignee -->
-			<td class="issue-col-people">
-				<img ng-src="{{ issue.user.avatar_url }}" class="has-tooltip avatar-mini" tooltip="Reporter {{ issue.user.login }}" />
-				<span ng-show="{{ issue.assignee }}">
-					<i class="fa fa-hand-o-right"></i>
-					<img ng-src="{{ issue.assignee.avatar_url }}" class="has-tooltip avatar-mini" tooltip="Assigned to {{ issue.assignee.login }}" />
-				</span>
-			</td>
-			
-			<!-- Issue title -->
-			<td>
-				<span ng-show="issue.labels.length > 0">
-					<span ng-repeat="label in issue.labels" class="label-issue" style="background-color: #{{ label.color }}">
-						<i class="fa fa-tag"></i>&nbsp;
-						{{ label.name }}
+<!-- reduced mode -->
+<div class="has-tooltip left panel large-6 medium-6 small-6 text-center reduced-feature" 
+		 tooltip="{{ Projects.issues[key].length }} active issue(s)"
+		 tooltip-placement="bottom"
+		 ng-class="{'active': Projects.issues[key].length > 0}"
+		 ng-show="mode == 'collapsed'">
+	<i class="fa fa-bug"></i>
+	<span>{{ Projects.issues[key].length }}</span>
+</div>
+
+
+
+<!-- expanded mode -->
+<div class="panel" ng-show="mode == 'expanded' && Projects.issues[key].length > 0">
+	<h4>{{ Projects.issues[key].length }} issue(s)</h4>
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th>People</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="issue in Projects.issues[key]">
+
+				<!-- Identifier -->
+				<td class="issue-col-id"><i class="fa fa-bug"></i>&nbsp;{{ issue.number }}</td>
+
+				<!-- Reporter / Assignee -->
+				<td class="issue-col-people">
+					<img ng-src="{{ issue.user.avatar_url }}" class="has-tooltip avatar-mini" tooltip="Reporter {{ issue.user.login }}" />
+					<span ng-show="{{ issue.assignee }}">
+						<i class="fa fa-hand-o-right"></i>
+						<img ng-src="{{ issue.assignee.avatar_url }}" class="has-tooltip avatar-mini" tooltip="Assigned to {{ issue.assignee.login }}" />
 					</span>
-				</span>
-				<em>{{ issue.title }}</em>
-			</td>
-			
-			<!-- Icons (view on github, created at) -->
-			<td class="issue-col-icons">
-				<a ng-href="{{ issue.html_url }}" class="has-tooltip sp-horizontal"
-					 tooltip="View this Issue on github" tooltip-placement="left">
-					<i class="fa fa-eye"></i>
-				</a>
-				<a class="has-tooltip sp-horizontal" 
-					 tooltip="Opened for {{ issue.created_at | since }} ({{ issue.created_at | date }})" 
-					 tooltip-placement="left">
-					<i class="fa fa-clock-o"></i>
-				</a>
-			</td>
-			
-		</tr>
-	</tbody>
-</table>
+				</td>
+
+				<!-- Issue title -->
+				<td>
+					<span ng-show="issue.labels.length > 0">
+						<span ng-repeat="label in issue.labels" class="label-issue" style="background-color: #{{ label.color }}">
+							<i class="fa fa-tag"></i>&nbsp;
+							{{ label.name }}
+						</span>
+					</span>
+					<em>{{ issue.title }}</em>
+				</td>
+
+				<!-- Icons (view on github, created at) -->
+				<td class="issue-col-icons">
+					<a ng-href="{{ issue.html_url }}" class="has-tooltip sp-horizontal"
+						 tooltip="View this Issue on github" tooltip-placement="left">
+						<i class="fa fa-eye"></i>
+					</a>
+					<a class="has-tooltip sp-horizontal" 
+						 tooltip="Opened for {{ issue.created_at | since }} ({{ issue.created_at | date }})" 
+						 tooltip-placement="left">
+						<i class="fa fa-clock-o"></i>
+					</a>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+</div>
