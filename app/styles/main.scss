@@ -42,6 +42,14 @@ td { height: 40px }
 .pr-col-from, .pr-col-to, .pr-col-infos { width: auto; }
 .issue-col-people { width: 100px }
 
+.label-issue {
+	border-radius: $size-radius * 2;
+	margin-right: $size-spacement / 2;
+	padding: 2px 5px;
+	font-weight: bold;
+	font-size: $size-sub-text;
+}
+
 // Overrides
 p { margin-bottom: 0 }
 .button.tiny { padding: 0.2rem }

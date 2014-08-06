@@ -25,7 +25,7 @@ angular.module('githubApp')
      */
     this.display = {
       pullRequests: true,
-      issues: false
+      issues: true
     };
     
     // -----------------------------------------------------------------------------------------------------------------

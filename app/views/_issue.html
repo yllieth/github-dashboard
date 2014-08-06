@@ -25,7 +25,15 @@
 			</td>
 			
 			<!-- Issue title -->
-			<td><em>{{ issue.title }}</em></td>
+			<td>
+				<span ng-show="issue.labels.length > 0">
+					<span ng-repeat="label in issue.labels" class="label-issue" style="background-color: #{{ label.color }}">
+						<i class="fa fa-tag"></i>&nbsp;
+						{{ label.name }}
+					</span>
+				</span>
+				<em>{{ issue.title }}</em>
+			</td>
 			
 			<!-- Icons (view on github, created at) -->
 			<td class="issue-col-icons">
