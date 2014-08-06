@@ -34,7 +34,7 @@
 					<i class="fa fa-eye"></i>
 				</a>
 				<a class="has-tooltip sp-horizontal" 
-					 tooltip="Opened for {{ Projects.since(issue.created_at) }} ({{ issue.created_at | date }})" 
+					 tooltip="Opened for {{ issue.created_at | since }} ({{ issue.created_at | date }})" 
 					 tooltip-placement="left">
 					<i class="fa fa-clock-o"></i>
 				</a>

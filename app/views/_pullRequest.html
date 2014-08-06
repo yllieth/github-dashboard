@@ -43,7 +43,7 @@
 				</a>
 				
 				<a class="has-tooltip sp-horizontal" 
-					 tooltip="Opened for {{ Projects.since(pull.created_at) }} ({{ pull.created_at | date }})" 
+					 tooltip="Opened for {{ pull.created_at | since }} ({{ pull.created_at | date }})" 
 					 tooltip-placement="left">
 					<i class="fa fa-clock-o"></i>
 				</a>
