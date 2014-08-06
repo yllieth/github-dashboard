@@ -3,32 +3,71 @@
 /**
  * @ngdoc function
  * @name githubApp.controller:MainCtrl
+ * @requires 'ngRoute', 'restangular', 'LocalStorageModule', 'mm.foundation'
  * @description
+ * 
  * # MainCtrl
- * Controller of the githubApp
+ * Provide data and handle calls of the main page displaying projects feature(s)
  */
 angular.module('githubApp')
   .controller('MainCtrl', function (localStorageService, github) {
     var self = this;
-    this.pullRequests = {};
-    this.issues = {};
+    this.names = [];
+    this.pullRequests = [];
+    this.issues = [];
 
+    /**
+     * @property {Object.boolean} Tells wich feature has to be displayed
+     * 
+     * Note: For each property of this object, this controller has 
+     * - an array with the same name wich contains data (ex: @link pullRequests)
+     * - a getter function to fetch data from github (ex: @link getPullRequests())
+     */
     this.display = {
       pullRequests: true,
-      issues: true
+      issues: false
     };
+    
+    // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Get the list of selected repositories wich have to be displayed in this view.
+     * 
+     * The `names` array will contain objects like :
+     * ```
+     * {owner: 'MyCompany', name: 'MyRepositoryName'}
+     * ```
+     * 
+     * @returns {void}
+     */
     this.repositories = function() {
       this.names = localStorageService.get('selectedRepos');
     };
 
+    /**
+     * Fetch data from github regarding to the selected features.
+     * 
+     * @returns {void}
+     */
     this.getData = function() {
       if (this.display.pullRequests === true) { this.getPullRequests(); }
       if (this.display.issues === true) { this.getIssues(); }
     };
 
+    /**
+     * Empties data
+     * 
+     * @returns {void}
+     */
+    this.reset = function() {
+      this.pullRequests = [];
+      this.issues = [];
+    };
+
+    // -----------------------------------------------------------------------------------------------------------------
+    
     this.getPullRequests = function() {
-      this.pullRequests = {};
+      this.pullRequests = [];
       if (this.display.pullRequests === true) {
         for (var i = 0 ; i < this.names.length ; i++) {
           var repo = this.names[i];
@@ -38,31 +77,13 @@ angular.module('githubApp')
     };
 
     this.getIssues = function() {
-      this.issues = {};
+      this.issues = [];
       if (this.display.issues === true) {
         for (var i = 0 ; i < this.names.length ; i++) {
           var repo = this.names[i];
           this.issues[repo.owner + '/' + repo.name] = github.getIssues(repo.owner, repo.name);
         }
       }
-    };
-
-    this.reset = function() {
-      this.pullRequests = {};
-    };
-
-    this.since = function(createdAt) {
-      var creationDate = new Date(createdAt);
-      var nowDate = new Date();
-
-      var diffMs = nowDate - creationDate;
-      var diffSec = Math.round(diffMs/1000);
-      var diffMin = Math.round(diffSec/60); if (diffMin === 0) { return diffSec + ' seconde' + ((diffSec > 1) ? 's' : ''); }
-      var diffHrs = Math.round(diffMin/60); if (diffHrs === 0) { return diffMin + ' minute' + ((diffMin > 1) ? 's' : ''); }
-      var diffDay = Math.round(diffHrs/24); if (diffDay === 0) { return diffHrs + ' hour' + ((diffHrs > 1) ? 's' : ''); }
-      var diffMth = Math.round(diffDay/30); if (diffMth === 0) { return diffDay + ' day' + ((diffDay > 1) ? 's' : ''); }
-
-      return diffMth + ' month' + ((diffMth > 1) ? 's' : '');
     };
   })
 ;
