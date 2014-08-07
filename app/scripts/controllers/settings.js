@@ -131,27 +131,30 @@ angular.module('githubApp')
       return Object.keys(self.profile).length > 0;
     };
 
-    this.selected = function(repoId, repoOwner){
+    this.selected = function(repoOwner, repoName){
       var repoList = getRepoListFromOwner(repoOwner);
-      var repo = searchForRepo('id', repoId, repoList);
-      var present = searchForRepo('name', repo.object.name, this.selectedRepos);
-      if (repo !== false) {
-        var updated = false;
-        if (repo.object.selected === true && present === false) {
-          // add a selected repo if not already present
-          this.selectedRepos.push({name: repo.object.name, owner: repo.object.owner.login});
-          updated = true;
-        }
+      var repo = searchForRepo('name', repoName, repoList);
+      var updated = false;
+      var present = (repoList === undefined)
+        ? searchForRepo('name', repoName,         this.selectedRepos)
+        : searchForRepo('name', repo.object.name, this.selectedRepos);
+      
+      if (present === false && repo !== false && repo.object.name !== undefined && repo.object.owner.login !== undefined) {
+        // add a selected repo if not already present
+        this.selectedRepos.push({name: repo.object.name, owner: repo.object.owner.login});
+        updated = true;
+      }
 
-        if (repo.object.selected === false && present !== false) {
-          // remove a selected repo
-          this.selectedRepos.splice(present.index, 1);
-          updated = true;
-        }
+      if (present !== false && present.index >= 0) {
+        // remove a selected repo
+        this.selectedRepos.splice(present.index, 1);
+        if (repo !== false) { repo.object.selected = false; }
+        updated = true;
+      }
 
-        if (updated === true) {
-          localStorageService.set('selectedRepos', JSON.stringify(this.selectedRepos));
-        }
+      
+      if (updated === true) {
+        localStorageService.set('selectedRepos', JSON.stringify(this.selectedRepos));
       }
     };
 

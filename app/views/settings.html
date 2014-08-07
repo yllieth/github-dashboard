@@ -42,8 +42,15 @@
 						<p>
 							<span class="text-bold">Selected repos: </span>
 							<span>
-								<span ng-repeat="selected in Settings.selectedRepos">
+								<span ng-repeat="selected in Settings.selectedRepos" 
+											class="selectedRepo">
 									{{ selected.name }}
+									
+									<i class="fa fa-trash-o has-tooltip cursor-pointer"
+										 tooltip="Stop watching this repo"
+										 tooltip-placement="bottom"
+										 ng-click="Settings.selected(selected.owner, selected.name)"
+									></i>
 								</span>
 							</span>
 						</p>
@@ -77,8 +84,8 @@
 							<tbody>
 								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)
 																												| filter: Settings.searchfield.me">
-									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, 'me')"/></td>
-									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, 'me')">{{ repo.name }}</td>
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected('me', repo.name)"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected('me', repo.name)">{{ repo.name }}</td>
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
 								</tr>
 								<tr ng-repeat="i in Settings.pagination.emptyLinesIterator(Settings.myRepos.length)"
@@ -131,8 +138,8 @@
 							<tbody>
 								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)
 										                             | filter: Settings.searchfield[org.details.login]">
-									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.id, repo.owner.login)"/></td>
-									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.id, repo.owner.login)">{{ repo.name }}</td>
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.owner.login, repo.name)"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.owner.login, repo.name)">{{ repo.name }}</td>
 									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
 								</tr>
 								<tr ng-repeat="i in Settings.pagination.emptyLinesIterator(org.repos.length)"
