@@ -10,6 +10,7 @@
 
 .sp-separator { margin-top: 2*$size-spacement; margin-bottom: 2*$size-spacement }
 .text-bold { font-weight: bold; }
+.cursor-pointer { cursor: pointer; }
 
 img.avatar {
 	width: $size-avatar;
@@ -25,7 +26,17 @@ img.avatar-mini {
 input[type=checkbox] { vertical-align: middle; margin: auto 0; }
 input[type=search] { width: 80%; height: 1.7rem; margin-bottom: 0; padding: 0 5px; }
 
-h3 { border-bottom: 1px solid $color-border }
+h3 { 
+	border-bottom: 1px solid $color-border;
+	
+	a {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 100%;
+		display: block;
+	}
+}
 
 a[tooltip] { margin-left: $size-spacement / 4; margin-right: $size-spacement / 4; }
 td { height: 40px }
@@ -59,6 +70,16 @@ article.reduced {
 		margin-bottom: 0;
 		
 		&.active { color: $color-dark-red; }
+	}
+}
+
+.selectedRepo {
+	&:hover {
+		border: 1px dotted $color-border;
+		background-color: $color-background;
+		padding: 5px 10px;
+		margin: 0px 2px;
+		font-weight: bold;
 	}
 }
 
