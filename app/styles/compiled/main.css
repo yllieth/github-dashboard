@@ -136,54 +136,50 @@ td {
   font-size: 12px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000354}}
-article.reduced {
-  height: 130px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000355}}
 article.reduced h3 {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000356}}
 article.reduced .reduced-feature {
   font-size: 20px;
   font-weight: bold;
   color: #008800;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000361}}
 article.reduced .reduced-feature.active {
   color: #880000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000366}}
 p {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000367}}
 .button.tiny {
   padding: 0.2rem;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000368}}
 tfoot ul.pagination {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000370}}
 button:hover, button:focus,
 .button:hover, .button:focus {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000372}}
 button.success:hover, button.success:focus,
 .button.success:hover, .button.success:focus {
   background-color: #008800;
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000374}}
 button.secondary:hover, button.secondary:focus,
 .button.secondary:hover, .button.secondary:focus {
   background-color: #c6c6c5;
@@ -191,7 +187,7 @@ button.secondary:hover, button.secondary:focus,
   color: white;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/sylvain\/projets\/github-dashboard\/app\/styles\/main\.scss}line{font-family:\0000375}}
 button[disabled=disabled], .button[disabled=disabled] {
   font-weight: normal;
   cursor: not-allowed;

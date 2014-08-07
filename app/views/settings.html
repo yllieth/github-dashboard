@@ -14,10 +14,10 @@
 		<div class="row sp-separator" ng-show="Settings.loaded()">
 			<div>
 				<div class="row">
-					<div class="small-4 medium-4 large-2 columns clearfix">
+					<div class="small-4 medium-2 large-2 columns clearfix">
 						<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar"/>
 					</div>
-					<div class="small-8 medium-8 large-10 columns">
+					<div class="small-8 medium-10 large-10 columns">
 						<!-- name -->
 						<p>
 							<span class="text-bold">Name: </span>
@@ -172,13 +172,14 @@
 									<span class="prefix">Owner :</span>
 								</div>
 								<div class="small-9 large-10 columns">
-									<input type="text" disabled="disabled" ng-model="Settings.extraRepo.owner" />
+									<input type="text" disabled="disabled" 
+												 placeholder="This field will be automatically filled once you put a valid github URL."
+												 ng-model="Settings.extraRepo.owner" />
 								</div>
 							</div>
 						</td>
 						<td rowspan="2">
 							<button class="expand sp-none"
-											style="height: 122%"
 											ng-click="Settings.addExtraRepo()"
 											ng-disabled="Settings.extraRepo.invalid">
 								Add
@@ -192,7 +193,9 @@
 									<span class="prefix">Project name :</span>
 								</div>
 								<div class="small-9 large-10 columns">
-									<input type="text" disabled="disabled" ng-model="Settings.extraRepo.name" />
+									<input type="text" disabled="disabled" 
+												 placeholder="This field will be automatically filled once you put a valid github URL."
+												 ng-model="Settings.extraRepo.name" />
 								</div>
 							</div>
 						</td>

@@ -17,7 +17,7 @@
 <div class="row">
 	<div class="large-9 columns" ng-init="Projects.repositories(); Projects.getData(); mode = 'collapsed'">
 		<article class="sp-bottom"
-						 ng-class="{'large-4 left panel reduced': mode == 'collapsed'}"
+						 ng-class="{'large-4 medium-4 small-6 left panel reduced': mode == 'collapsed'}"
 						 ng-repeat="project in Projects.names"
 						 ng-init="key = project.owner + '/' + project.name">
 			
