@@ -1,0 +1,118 @@
+@import "variables";
+
+.sp-top { margin-top: $size-spacement; }
+.sp-left { margin-left: $size-spacement; }
+.sp-right { margin-right: $size-spacement; }
+.sp-bottom { margin-bottom: $size-spacement; }
+.sp-vertical { margin-top: $size-spacement / 2; margin-bottom: $size-spacement / 2; }
+.sp-horizontal { margin-left: $size-spacement / 2; margin-right: $size-spacement / 2; }
+.sp-none { margin: 0; }
+
+.sp-separator { margin-top: 2*$size-spacement; margin-bottom: 2*$size-spacement }
+.text-bold { font-weight: bold; }
+.cursor-pointer { cursor: pointer; }
+
+img.avatar {
+	width: $size-avatar;
+	height: $size-avatar;
+	border-radius: $size-avatar/2;
+}
+img.avatar-mini {
+	width: $size-avatar/3;
+	height: $size-avatar/3;
+	border-radius: $size-radius;
+}
+
+input[type=checkbox] { vertical-align: middle; margin: auto 0; }
+input[type=search] { width: 80%; height: 1.7rem; margin-bottom: 0; padding: 0 5px; }
+
+h3 { 
+	border-bottom: 1px solid $color-border;
+	
+	a {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 100%;
+		display: block;
+	}
+}
+
+a[tooltip] { margin-left: $size-spacement / 4; margin-right: $size-spacement / 4; }
+td { height: 40px }
+
+.button-search {
+	padding: 3px 10px;
+	margin-bottom: 0;
+	background-color: $color-dark-blue;
+}
+
+.pr-col-id, .issue-col-id { width: 65px }
+.pr-col-arrow { width: 15px }
+.pr-col-icons, .issue-col-icons { width: 40px }
+.pr-col-from, .pr-col-to, .pr-col-infos { width: auto; }
+.issue-col-people { width: 100px }
+
+.label-issue {
+	border-radius: $size-radius * 2;
+	margin-right: $size-spacement / 2;
+	padding: 2px 5px;
+	font-weight: bold;
+	font-size: $size-sub-text;
+}
+
+article.reduced {
+	h3 { font-size: $size-sub-title }
+	.reduced-feature {
+		font-size: $size-title;
+		font-weight: bold;
+		color: $color-dark-green;
+		margin-bottom: 0;
+		
+		&.active { color: $color-dark-red; }
+	}
+}
+
+.selectedRepo {
+	&:hover {
+		border: 1px dotted $color-border;
+		background-color: $color-background;
+		padding: 5px 10px;
+		margin: 0px 2px;
+		font-weight: bold;
+	}
+}
+
+// Overrides
+p { margin-bottom: 0 }
+.button.tiny { padding: 0.2rem }
+tfoot ul.pagination { margin-bottom: 0}
+ button:hover,  button:focus, 
+.button:hover, .button:focus { font-weight: bold; }
+ button.success:hover,  button.success:focus, 
+.button.success:hover, .button.success:focus { background-color: $color-dark-green; font-weight: bold; }
+ button.secondary:hover,  button.secondary:focus, 
+.button.secondary:hover, .button.secondary:focus { background-color: $color-grey; font-weight: bold; color: white; }
+button[disabled=disabled], .button[disabled=disabled] { font-weight: normal; cursor: not-allowed; }
+
+.panel.title {
+	font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	margin-bottom: 0;
+	padding: 10px;
+	border-bottom: none;
+	
+	i {
+		border-radius: $size-radius;
+		padding: 3px;
+		font-size: $size-title;
+		color: $color-background;
+		background-color: black;
+	}
+}
+
+.panel.content {
+	margin-bottom: 0;
+	background-color: $color-background;
+	border-top: 0;
+}

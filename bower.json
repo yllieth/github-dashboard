@@ -1,0 +1,21 @@
+{
+  "name": "github",
+  "version": "0.1.2",
+  "dependencies": {
+    "angular": "1.2.16",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "angular-route": "1.2.16",
+    "foundation": "~5.3.1",
+    "font-awesome": "~4.1.0",
+    "angular-foundation": "~0.3.0",
+    "angular-local-storage": "~0.0.5",
+    "restangular": "~1.4.0",
+    "oauth-js": "~0.2.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.16",
+    "angular-scenario": "1.2.16"
+  },
+  "appPath": "app"
+}

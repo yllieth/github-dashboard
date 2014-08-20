@@ -1,0 +1,230 @@
+<div class="panel content" ng-init="Settings.init()">
+	<form class="clearfix sp-top">
+		
+		
+		
+		<!-- Github connect -->
+		<div class="row">
+			<button class="expand success" ng-click="Settings.authenticate(true)">
+				Connect to your GitHub account<br/>
+        <small>Access to both public and private repos</small>
+			</button>
+			<button class="expand" ng-click="Settings.authenticate(false)">
+				Connect to your GitHub account<br/>
+        <small>Only acces public repos</small>
+			</button>
+		</div>
+
+		
+		
+		
+		<div class="row sp-separator" ng-show="Settings.loaded()">
+			<!-- User details -->
+			<div>
+				<div class="row">
+					<div class="small-4 medium-2 large-2 columns clearfix">
+						<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar"/>
+					</div>
+					<div class="small-8 medium-10 large-10 columns">
+						<!-- name -->
+						<p>
+							<span class="text-bold">Name: </span>
+							<span>{{ Settings.profile.name }} <em>aka</em> {{ Settings.profile.login }}</span>
+						</p>
+						
+						<!-- companies -->
+						<p ng-show="Settings.profile.company">
+							<span class="text-bold">Company: </span>
+							<span>{{ Settings.profile.company }}</span>
+						</p>
+						
+						<!-- selected repos -->
+						<p>
+							<span class="text-bold">Selected repos: </span>
+							<span>
+								<span ng-repeat="selected in Settings.selectedRepos" 
+											class="selectedRepo">
+									{{ selected.name }}
+									
+									<i class="fa fa-trash-o has-tooltip cursor-pointer"
+										 tooltip="Stop watching this repo"
+										 tooltip-placement="bottom"
+										 ng-click="Settings.selected(selected.owner, selected.name)"
+									></i>
+								</span>
+							</span>
+						</p>
+					</div>
+				</div>
+
+				<div class="sp-top clearfix">
+					
+					<!-- user own repos -->
+					<div class="left large-4 medium-4 small-6">
+						<table ng-init="Settings.currentPage.me = 1" width="95%">
+							<thead>
+								<tr>
+									<th colspan="3">
+										<span ng-hide="Settings.search.me">
+											<img ng-src="{{ Settings.profile.avatar_url }}" class="avatar-mini"/>
+											<span>My reposiroties</span>
+										</span>
+										<span ng-show="Settings.search.me">
+											<input type="search" ng-model="Settings.searchfield.me" class="left" placeholder="Enter a repository name"/>
+										</span>
+										<span class="right">
+											<button class="button-search radius" ng-click="Settings.search.me = !Settings.search.me">
+												<i class="fa" ng-class="{'fa-search': !Settings.search.me, 'fa-times-circle-o': Settings.search.me}"></i>
+											</button>
+										</span>
+									</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr ng-repeat="repo in Settings.myRepos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage.me - 1) + Settings.pagination.nbPerPage)
+																												| filter: Settings.searchfield.me">
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected('me', repo.name)"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected('me', repo.name)">{{ repo.name }}</td>
+									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+								</tr>
+								<tr ng-repeat="i in Settings.pagination.emptyLinesIterator(Settings.myRepos.length)"
+										ng-show="Settings.currentPage.me == Settings.pagination.nbPages(Settings.myRepos.length)">
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+							</tbody>
+
+							<tfoot>
+								<tr ng-show="Settings.myRepos.length > Settings.pagination.nbPerPage">
+									<td colspan="3">
+										<pagination total-items="Settings.myRepos.length" items-per-page="Settings.pagination.nbPerPage"
+																page="Settings.currentPage.me"
+																max-size="Settings.pagination.max"
+																class="pagination-sm"
+																boundary-links="true"
+																rotate="false"
+																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+										></pagination>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+
+					<!-- user's companies repos -->
+					<div class="left large-4 medium-4 small-6" ng-repeat="org in Settings.orgRepos">
+						<table ng-init="Settings.currentPage[org.details.login] = 1" width="95%">
+							<thead>
+								<tr>
+									<th colspan="3">
+										<span ng-hide="Settings.search[org.details.login]">
+											<img ng-src="{{ org.details.avatar_url }}" class="avatar-mini"/>
+											<span>{{ org.details.login }}</span>
+										</span>
+										<span ng-show="Settings.search[org.details.login]">
+											<input type="search" ng-model="Settings.searchfield[org.details.login]" class="left" placeholder="Enter a repository name"/>
+										</span>
+										<span class="right">
+											<button class="button-search radius" ng-click="Settings.search[org.details.login] = !Settings.search[org.details.login]">
+												<i class="fa" ng-class="{'fa-search': !Settings.search[org.details.login], 'fa-times-circle-o': Settings.search[org.details.login]}"></i>
+											</button>
+										</span>
+									</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr ng-repeat="repo in org.repos | slice:(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1)):(Settings.pagination.nbPerPage * (Settings.currentPage[org.details.login] - 1) + Settings.pagination.nbPerPage)
+										                             | filter: Settings.searchfield[org.details.login]">
+									<td><input type="checkbox" ng-model="repo.selected" ng-change="Settings.selected(repo.owner.login, repo.name)"/></td>
+									<td ng-click="repo.selected = !repo.selected; Settings.selected(repo.owner.login, repo.name)">{{ repo.name }}</td>
+									<td><i class="fa" ng-class="{'fa-lock': repo.private, 'fa-code-fork': repo.fork}"></i></td>
+								</tr>
+								<tr ng-repeat="i in Settings.pagination.emptyLinesIterator(org.repos.length)"
+										ng-show="Settings.currentPage[org.details.login] == Settings.pagination.nbPages(org.repos.length)">
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+							</tbody>
+
+							<tfoot>
+								<tr ng-show="org.repos.length > Settings.pagination.nbPerPage">
+									<td colspan="3">
+										<pagination total-items="org.repos.length" items-per-page="Settings.pagination.nbPerPage"
+																page="Settings.currentPage[org.details.login]"
+																max-size="Settings.pagination.max"
+																class="pagination-sm"
+																boundary-links="true"
+																rotate="false"
+																previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+										></pagination>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+					
+					<!-- Followed repos -->
+					<div class="left large-4 medium-4 small-6">
+						<div>
+							<div class="panel title">
+								<i class="fa fa-github"></i>
+								Other repositories
+							</div>
+							
+							<div class="panel content">
+								<p>If you want to follow some other public repositories, please provide the url :</p>
+								
+								<input type="text"
+											 placeholder="Ex: https://github.com/yllieth/github-dashboard"
+											 ng-model="Settings.extraRepo.url"
+											 ng-change="Settings.url2Repo()"/>
+								
+								<div>
+									<!-- owner -->
+									<div class="row collapse">
+										<div class="small-3 large-2 columns">
+											<span class="prefix">Owner :</span>
+										</div>
+										<div class="small-9 large-10 columns">
+											<input type="text" disabled="disabled" 
+														 ng-model="Settings.extraRepo.owner" />
+										</div>
+									</div>
+									
+									<!-- repository name -->
+									<div class="row collapse">
+										<div class="small-3 large-2 columns">
+											<span class="prefix">Name :</span>
+										</div>
+										<div class="small-9 large-10 columns">
+											<input type="text" disabled="disabled" 
+														 ng-model="Settings.extraRepo.name" />
+										</div>
+									</div>
+									
+									<!-- Add button -->
+									<button class="expand sp-none"
+													ng-click="Settings.addExtraRepo()"
+													ng-disabled="Settings.extraRepo.invalid">
+										Add
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+
+    <div class="row">
+      <a class="button expand secondary sp-none" href="#">Back to your dashboard</a>
+    </div>
+	</form>
+</div>
