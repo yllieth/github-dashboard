@@ -1,11 +1,11 @@
 <!-- reduced mode -->
-<div class="has-tooltip left panel large-6 medium-6 small-6 text-center reduced-feature" 
+<div class="has-tooltip left panel large-6 medium-6 small-6 text-center reduced-feature"
 		 tooltip="{{ Projects.issues[key].length }} active issue(s)"
 		 tooltip-placement="bottom"
 		 ng-class="{'active': Projects.issues[key].length > 0}"
 		 ng-show="mode == 'collapsed'">
 	<i class="fa fa-bug"></i>
-	<span>{{ Projects.issues[key].length }}</span>
+	<span>{{ Projects.issues[key].length || 0 }}</span>
 </div>
 
 
@@ -55,8 +55,8 @@
 						 tooltip="View this Issue on github" tooltip-placement="left">
 						<i class="fa fa-eye"></i>
 					</a>
-					<a class="has-tooltip sp-horizontal" 
-						 tooltip="Opened for {{ issue.created_at | since }} ({{ issue.created_at | date }})" 
+					<a class="has-tooltip sp-horizontal"
+						 tooltip="Opened for {{ issue.created_at | since }} ({{ issue.created_at | date }})"
 						 tooltip-placement="left">
 						<i class="fa fa-clock-o"></i>
 					</a>
