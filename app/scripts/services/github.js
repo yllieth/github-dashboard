@@ -29,9 +29,9 @@ angular.module('githubApp')
       getPullRequest: function(owner, repo) {
         return Restangular.one('repos', owner).one(repo).getList('pulls').$object;
       },
-      
+
       getIssues: function(owner, repo) {
-        return Restangular.one('repos', owner).one(repo).getList('issues').$object;
+        return Restangular.one('repos', owner).one(repo).getList('issues');
       }
     };
 });

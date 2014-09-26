@@ -20,7 +20,7 @@
 						 ng-class="{'large-4 medium-4 small-6 left panel reduced': mode == 'collapsed'}"
 						 ng-repeat="project in Projects.names"
 						 ng-init="key = project.owner + '/' + project.name">
-			
+
 			<h3>
 				<a ng-href="{{ project.url }}" target="_blank">
 					{{ project.owner }}
@@ -31,18 +31,18 @@
 
 			<div
 					 ng-show="Projects.display.pullRequests"
-					 ng-include="'views/_pullRequest.html'"
+					 ng-include="'views/pullRequest.html'"
 			></div>
 
 
       <div
 					 ng-show="Projects.display.issues"
-					 ng-include="'views/_issue.html'"
+					 ng-include="'views/issue.html'"
 			></div>
 		</article>
 	<hr/>
 	</div>
-	
+
 
 
 
@@ -51,36 +51,36 @@
 	<aside class="large-3 columns">
 		<div class="panel">
 			<h5>
-				Select feature 
+				Select feature
 				<button class="button primary tiny right" ng-click="Projects.reset(); Projects.getData()">Update</button>
 			</h5>
-			
+
 			<p>
-				<input type="checkbox" id="display-PRs" 
+				<input type="checkbox" id="display-PRs"
 							 ng-model="Projects.display.pullRequests"
 							 ng-change="Projects.getPullRequests()"/>
 				<label for="display-PRs">Pull requests</label>
 			</p>
-			
+
 			<p>
-				<input type="checkbox" id="display-issues" 
+				<input type="checkbox" id="display-issues"
 							 ng-model="Projects.display.issues"
 							 ng-change="Projects.getIssues()"/>
 				<label for="display-issues">Issues</label>
 			</p>
 		</div>
-		
+
 		<!-- Expand reduced blocks -->
-		<button class="expand success radius" 
-						ng-show="mode == 'collapsed'" 
+		<button class="expand success radius"
+						ng-show="mode == 'collapsed'"
 						ng-click="mode = 'expanded'">
 			<i class="fa fa-expand"></i>
 			Expand all
 		</button>
-		
+
 		<!-- Collapsed enlarged blocks -->
-		<button class="expand success radius" 
-						ng-show="mode == 'expanded'" 
+		<button class="expand success radius"
+						ng-show="mode == 'expanded'"
 						ng-click="mode = 'collapsed'">
 			<i class="fa fa-compress"></i>
 			Collapse all
@@ -93,4 +93,4 @@
 
 
 
-<footer class="row" ng-include="'views/_footer.html'"></footer>
+<footer class="row" ng-include="'views/footer.html'"></footer>
